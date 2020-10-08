@@ -18,3 +18,6 @@ sudo apt-get install openocd
 
 sudo apt-get install gcc-arm-none-eabi
 
+### LIB USB ###
+
+sudo apt-get install libusb.1.0-0-dev
