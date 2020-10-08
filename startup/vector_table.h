@@ -212,17 +212,6 @@ void NMI_Handler(void)
 }
 void HardFault_Handler(void)
 {
-	volatile int *clk   =  (int *) 0x40023830;
-	volatile int *gpio  =  (int *) 0x40020000; 
-
-	*clk |= (1 << 0);
-
-	*gpio |= (1 << 10);
-
-	gpio += 0x14;
-
-	*gpio |= (1 << 5);
-
 	while (1);
 }
 
