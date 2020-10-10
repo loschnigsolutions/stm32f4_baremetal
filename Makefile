@@ -6,12 +6,13 @@ OUTPUT = final
 
 all    :  clean $(OUTPUT).bin
 flash  :  clean flash_img
+debug  :  clean debug_img
 
 Startup=Startup_CM4
 
-CFLAGS = -nostdlib -c -mcpu=cortex-m4 -mthumb -O0 -Wall -std=gnu11 -g3
+CFLAGS = -c -mcpu=cortex-m4 -mthumb -O0 -Wall -std=gnu11 -g3
 
-LFLAGS =  -mcpu=cortex-m4 -mthumb -T ./ld/link.ld -nostdlib -Wl,-Map=$(Project).map
+LFLAGS =  -nostdlib -mcpu=cortex-m4 -mthumb -T ./ld/link.ld -nostdlib -Wl,-Map=$(Project).map
 
 TOOLCHAIN = arm-none-eabi
 
@@ -43,5 +44,5 @@ flash_img: $(OUTPUT).bin
 	#st-flash erase
 	st-flash write $(OUTPUT).bin 0x8000000
 
-debug:
+debug_img: $(OUTPUT).elf
 	$(TOOLCHAIN)-gdb $(OUTPUT).elf
