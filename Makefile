@@ -46,3 +46,6 @@ flash_img: $(OUTPUT).bin
 
 debug_img: $(OUTPUT).elf
 	$(TOOLCHAIN)-gdb $(OUTPUT).elf
+
+run_ocd:
+	openocd -f install/st_nucleo_f4.cfg
